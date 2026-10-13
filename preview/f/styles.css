@@ -1,0 +1,161 @@
+/* Option F · Invitación. The home page is a quinceañera invitation: centered stationery
+   compositions, fine gold line ornaments (geometric SVG, not illustration), Gastela as the
+   calligraphy, Cormorant Garamond as the engraved text. The family "confirms the date"
+   (RSVP) instead of filling a form; packages are place cards for the table of honor. */
+
+@font-face { font-family: "Picnic"; src: url("../../wp-content/uploads/2026/01/ThePicnicClub-Regular.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Gastela"; src: url("../../wp-content/uploads/2026/01/Gastela-Regular.ttf") format("truetype"); font-display: swap; }
+
+:root {
+  --blush: #f4dde1;
+  --blush-2: #efd2d8;
+  --card: #fffbfb;
+  --ink: #4a1d2c;
+  --ink-2: #7a4d5c;
+  --wine: #8c4259;
+  --gold: #a8832f;
+  --gold-light: #d8b968;
+  --display: "Picnic", "Bodoni Moda", serif;
+  --script: "Gastela", cursive;
+  --text: "Cormorant Garamond", Garamond, serif;
+  --out: cubic-bezier(0.23, 1, 0.32, 1);
+  --gutter: clamp(16px, 4vw, 48px);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--blush); color: var(--ink); font: 500 1.22rem/1.6 var(--text); text-align: center; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+::selection { background: var(--wine); color: var(--card); }
+:focus-visible { outline: 2px solid var(--wine); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 1.04; text-wrap: balance; }
+.script { font-family: var(--script); color: var(--wine); margin: 0; line-height: 1.25; }
+.small-caps { font-variant: small-caps; letter-spacing: 0.14em; font-weight: 600; font-size: 1.05rem; color: var(--ink-2); margin: 0; }
+section { padding: clamp(56px, 8vw, 110px) var(--gutter); }
+section > h2 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); }
+.divider { display: block; width: 220px; height: 16px; margin: 18px auto; color: var(--gold); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 1.8em;
+  background: var(--wine); color: var(--card); border: 1px solid var(--wine); text-decoration: none;
+  font: 600 1.05rem/1 var(--text); letter-spacing: 0.08em; font-variant: small-caps;
+  transition: background-color 0.25s ease, color 0.25s ease, scale 0.16s var(--out);
+}
+.btn:hover { background: var(--ink); border-color: var(--ink); }
+.btn:active { scale: 0.97; }
+.btn-line { background: transparent; color: var(--wine); }
+.btn-line:hover { background: var(--wine); color: var(--card); }
+.link { color: var(--wine); font-style: italic; text-underline-offset: 0.3em; display: inline-block; margin-top: 26px; }
+
+/* Header */
+.head { padding: 14px var(--gutter); }
+.head-in { display: flex; justify-content: center; align-items: center; gap: clamp(18px, 4vw, 52px); font-variant: small-caps; letter-spacing: 0.12em; font-weight: 600; font-size: 1.05rem; }
+.head-in > a { text-decoration: none; color: var(--ink); }
+.head-in > a:hover { color: var(--wine); }
+.head-mono img { width: 54px; }
+
+/* Cards with gold frames */
+.card { position: relative; background: var(--card); margin: 0 auto; box-shadow: 0 30px 60px -36px rgb(74 29 44 / 0.45); }
+.card::before { content: ""; position: absolute; inset: 14px; border: 1px solid var(--gold-light); pointer-events: none; }
+.card::after { content: ""; position: absolute; inset: 20px; border: 1px solid rgb(168 131 47 / 0.35); pointer-events: none; }
+.c { position: absolute; width: 46px; height: 46px; color: var(--gold); z-index: 1; }
+.tl { top: 8px; left: 8px; } .tr { top: 8px; right: 8px; rotate: 90deg; } .br { bottom: 8px; right: 8px; rotate: 180deg; } .bl { bottom: 8px; left: 8px; rotate: 270deg; }
+
+/* Hero invitation */
+.invite { padding-top: clamp(16px, 3vw, 40px); }
+.card-hero { max-width: 760px; padding: 36px clamp(28px, 6vw, 64px) 44px; }
+.card-photo { width: 100%; aspect-ratio: 5 / 2; object-fit: cover; object-position: 50% 35%; margin-bottom: 22px; position: relative; z-index: 1; }
+.hero-script { font-size: clamp(2.2rem, 4.6vw, 3.2rem); margin: 4px 0 0; }
+.card-hero h1 { font-size: clamp(2.2rem, 4.8vw, 3.4rem); }
+.details { margin: 0 0 20px; color: var(--ink-2); font-style: italic; }
+
+/* Note */
+.card-note { max-width: 640px; padding: 46px clamp(26px, 6vw, 64px) 120px; text-align: left; rotate: -1deg; background: #fff; }
+.card-note::before, .card-note::after { display: none; }
+.note-hello { font-size: clamp(2.6rem, 5vw, 3.6rem); text-align: center; margin-bottom: 18px; }
+.card-note p { margin: 0 0 1em; font-style: italic; color: var(--ink); }
+.note-sign { margin-top: 1.4em !important; }
+.note-sign .script { display: block; font-size: 2.4rem; font-style: normal; }
+.note-photo { position: absolute; right: -34px; bottom: -40px; width: 170px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 15%; border: 8px solid #fff; box-shadow: 0 18px 40px -20px rgb(74 29 44 / 0.5); rotate: 5deg; }
+
+/* Details */
+.details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 4vw, 56px); max-width: 1080px; margin: 28px auto 0; }
+.details-grid h3 { font: 600 1.2rem/1.2 var(--text); font-variant: small-caps; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 10px; }
+.details-grid p { margin: 0; }
+.details-more { margin: 40px auto 0; font-family: var(--script); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--wine); }
+
+/* Table of honor */
+.mesa { background: var(--blush-2); }
+.mesa-sub { margin: 10px 0 40px; font-style: italic; color: var(--ink-2); }
+.place-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1080px; margin: 0 auto; align-items: end; }
+.place { background: var(--card); padding: 34px 24px 30px; position: relative; box-shadow: 0 24px 40px -30px rgb(74 29 44 / 0.5); border-top: 1px solid var(--gold-light); }
+.place::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgb(168 131 47 / 0.3); pointer-events: none; }
+.place .script { font-size: 3rem; }
+.place ul { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 6px; }
+.place-elite { padding-top: 46px; background: var(--wine); color: var(--card); }
+.place-elite .script { color: var(--gold-light); }
+.place-elite::before { border-color: rgb(216 185 104 / 0.5); }
+.place-flag { margin: 0; font-variant: small-caps; letter-spacing: 0.12em; font-weight: 600; font-size: 0.95rem; color: var(--gold-light); }
+
+/* Memories */
+.memories-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 16px; max-width: 1180px; margin: 30px auto 0; }
+.memories-grid figure { margin: 0; position: relative; padding: 8px; background: var(--card); box-shadow: 0 16px 30px -22px rgb(74 29 44 / 0.5); }
+.memories-grid .tall { grid-row: span 2; }
+.memories-grid figure:first-child { grid-column: span 2; }
+.memories-grid img { width: 100%; height: 100%; object-fit: cover; }
+.memories-grid figcaption { position: absolute; left: 50%; bottom: -14px; translate: -50% 0; background: var(--card); padding: 0 14px; font-family: var(--script); font-size: 1.6rem; color: var(--wine); line-height: 1.4; }
+
+/* Words */
+.words blockquote { max-width: 760px; margin: 0 auto; }
+.words p { font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-style: italic; line-height: 1.4; margin: 0 0 14px; }
+.words cite { font-style: normal; font-variant: small-caps; letter-spacing: 0.14em; color: var(--gold); font-weight: 600; }
+
+/* RSVP */
+.card-rsvp { max-width: 640px; padding: 60px clamp(26px, 6vw, 64px); }
+.card-rsvp h2 { font-size: clamp(2.6rem, 5vw, 3.6rem); margin: 8px 0 16px; }
+.card-rsvp > p:not(.small-caps):not(.rsvp-small) { color: var(--ink-2); max-width: 40ch; margin: 0 auto 28px; }
+.rsvp-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; position: relative; z-index: 1; }
+.rsvp-small { margin: 24px 0 0; font-size: 1rem; color: var(--ink-2); }
+
+/* Footer */
+.foot { padding: 40px var(--gutter) 120px; font-size: 1rem; color: var(--ink-2); }
+.foot img { width: 200px; margin: 0 auto 14px; }
+.foot p { margin: 0 0 6px; }
+.foot .small { font-size: 0.9rem; }
+
+/* Phone menu */
+.mmenu { display: none; position: relative; }
+.mmenu summary { list-style: none; cursor: pointer; padding: 8px 16px; border: 1px solid var(--gold); color: var(--ink); }
+.mmenu summary::-webkit-details-marker { display: none; }
+.mmenu ul { position: absolute; right: 0; top: calc(100% + 8px); min-width: 230px; list-style: none; margin: 0; padding: 8px; background: var(--card); box-shadow: 0 20px 40px -20px rgb(74 29 44 / 0.5); z-index: 60; text-align: left; font-variant: normal; letter-spacing: 0.02em; }
+.mmenu li a { display: block; padding: 10px 12px; text-decoration: none; }
+.mmenu li a:hover { background: var(--blush); }
+
+/* Motion: the hero invitation lifts out of its envelope; the rest settles in. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .card-hero { animation: lift 1.4s var(--out) both; }
+  .js .card-hero > * { animation: ink 1.2s var(--out) both; animation-delay: 0.6s; }
+  .js .card-hero .hero-script { animation-delay: 0.85s; }
+  .js .card-hero h1 { animation-delay: 1s; }
+  .js .reveal { opacity: 0; translate: 0 20px; transition: opacity 0.9s var(--out), translate 0.9s var(--out); transition-delay: var(--d, 0ms); }
+  .js .reveal.in { opacity: 1; translate: 0 0; }
+  .js .card-note.reveal.in { translate: 0 0; }
+}
+@keyframes lift { from { translate: 0 60px; scale: 0.96; opacity: 0; } to { translate: 0 0; scale: 1; opacity: 1; } }
+@keyframes ink { from { opacity: 0; filter: blur(4px); } to { opacity: 1; filter: blur(0); } }
+
+@media (max-width: 1024px) {
+  .head-in > a:not(.head-mono) { display: none; }
+  .head-in { justify-content: space-between; }
+  .mmenu { display: block; }
+  .details-grid, .place-cards { grid-template-columns: 1fr; }
+  .memories-grid { grid-template-columns: repeat(2, 1fr); }
+  .memories-grid figure:first-child { grid-column: span 2; }
+}
+@media (max-width: 767px) {
+  .card-note { rotate: 0deg; padding-bottom: 60px; }
+  .note-photo { position: relative; right: auto; bottom: auto; margin: 24px auto 0; }
+  .c { width: 34px; height: 34px; }
+  .memories-grid { grid-auto-rows: 170px; }
+}
