@@ -51,7 +51,7 @@
 .expo-page.elementor-154 .elementor-element.elementor-element-1ddaa4f6 { --align-items: flex-start; align-items: flex-start; }
 .expo-page.elementor-154 .elementor-element.elementor-element-7af23cc1,
 .expo-page.elementor-154 .elementor-element.elementor-element-49d63a20,
-.expo-page.elementor-154 .elementor-element.elementor-element-25d034bd { --justify-content: flex-start; justify-content: flex-start; }
+.expo-page.elementor-154 .elementor-element.elementor-element-25d034bd { --justify-content: flex-start; justify-content: flex-start; --align-self: flex-start; align-self: flex-start; }
 
 /* Over the phone cover's dark veil */
 .expo-page .expo-count--veil .expo-count__label { color: #fff; }
