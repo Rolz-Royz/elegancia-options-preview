@@ -1,0 +1,144 @@
+/* /expo/: only the new parts. Everything else on the page is the Inicio's own Elementor CSS
+   (cover panels, services trio, packages, closing call). Values come from the site's kit:
+   wine #8C4259 / #844F60, rose #C9899A, blush #F9E0E2, gold #CCA544 and #E8CA4E,
+   Picnic titles tracked 4px, Gastela script lines, Inter body. */
+
+.expo-page {
+  --expo-wine: #8C4259;
+  --expo-ink: #844F60;
+  --expo-script: #A04960;      /* the site's rose, darkened to pass contrast on blush */
+  --expo-blush: #F9E0E2;
+  --expo-gold: #CCA544;
+  --expo-gold-light: #E8CA4E;  /* gold that holds up on wine */
+  --expo-shadow: 7px 6px 10px 0 rgb(0 0 0 / 0.45);
+  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.expo-page ::selection { background: var(--expo-wine); color: var(--expo-blush); }
+.expo-page :focus-visible { outline: 2px solid var(--expo-gold); outline-offset: 3px; }
+
+/* ---- Countdown, inside the cover ---------------------------------------------------------- */
+/* Above the phone cover's veil, like the widgets around it */
+.expo-page .expo-count { position: relative; z-index: 2; text-align: center; margin: 4px auto 22px; }
+.expo-page .expo-count p { margin: 0; }
+.expo-page .expo-count__label {
+  font-family: "Elegancia Font Picnic", serif; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 4px; font-size: 22px; line-height: 1; color: var(--expo-wine);
+}
+.expo-page .expo-count__days { display: flex; align-items: baseline; justify-content: center; gap: 14px; margin-top: 2px; }
+.expo-page .expo-count__num {
+  display: inline-block; min-width: 2ch; text-align: center;
+  font-family: "Elegancia Font Picnic", serif; font-weight: 700; font-size: clamp(7rem, 11vw, 10.5rem);
+  line-height: 0.84; letter-spacing: -0.02em; color: var(--expo-wine);
+}
+.expo-page .expo-count__unit { font-family: "Elegancia Font Gastela", cursive; font-size: 50px; line-height: 1; color: var(--expo-script); }
+.expo-page .expo-count__when { margin-top: 16px; font-family: "Inter", sans-serif; font-size: 15px; font-weight: 500; line-height: 1.5; letter-spacing: 0.02em; color: var(--expo-wine); }
+
+/* The three photos in "Ven a vernos" share the Inicio cards' landscape frame */
+.expo-page.elementor-154 .elementor-element.elementor-element-114de4f4 img,
+.expo-page.elementor-154 .elementor-element.elementor-element-5bc04cde img,
+.expo-page.elementor-154 .elementor-element.elementor-element-38372d24 img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.expo-page.elementor-154 .elementor-element.elementor-element-5bc04cde img { object-position: 50% 62%; }
+.expo-page.elementor-154 .elementor-element.elementor-element-38372d24 img { object-position: 50% 30%; }
+.expo-page .expo-count[data-state="today"] .expo-count__unit,
+.expo-page .expo-count[data-state="past"] .expo-count__days { display: none; }
+
+/* Over the phone cover's dark veil */
+.expo-page .expo-count--veil .expo-count__label { color: #fff; }
+.expo-page .expo-count--veil .expo-count__num { color: var(--expo-blush); font-size: clamp(5.5rem, 26vw, 7.5rem); }
+.expo-page .expo-count--veil .expo-count__unit { color: var(--expo-gold-light); font-size: 44px; }
+.expo-page .expo-count--veil .expo-count__when { color: #fff; }
+
+/* ---- Shared type and buttons for the new sections ------------------------------------------ */
+.expo-page .expo-script { margin: 0 0 6px; font-family: "Elegancia Font Gastela", cursive; font-weight: 400; font-size: 46px; line-height: 1.15; color: var(--expo-script); }
+.expo-page .expo-script--gold { color: var(--expo-gold-light); }
+.expo-page .expo-place .expo-script--gold { color: #9C7B2A; }
+.expo-page .expo-title {
+  margin: 0 0 26px; font-family: "Elegancia Font Picnic", serif; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 4px; font-size: clamp(2.6rem, 4.4vw, 4.4rem); line-height: 1; color: var(--expo-wine); text-wrap: balance;
+}
+.expo-page .expo-title--light { color: var(--expo-blush); }
+
+.expo-page .expo-button {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 12px 24px;
+  font-family: "Elegancia Font Picnic", serif; font-size: 18px; line-height: 1; text-transform: uppercase; letter-spacing: 1px;
+  color: #fff; background: var(--expo-wine); border: 1px solid var(--expo-wine); border-radius: 0; text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, scale 0.15s var(--expo-out);
+}
+.expo-page .expo-button:hover { background: #6E3346; border-color: #6E3346; color: #fff; }
+.expo-page .expo-button:active { scale: 0.97; }
+/* The site's outlined pill ("Contact Us") */
+.expo-page .expo-button--outline,
+.expo-page .expo-button--light {
+  padding: 15px 30px; border-radius: 60px; background: transparent;
+  font-family: "Inter", sans-serif; font-size: 16px; text-transform: none; letter-spacing: -0.2px;
+}
+.expo-page .expo-button--outline { color: var(--expo-ink); border-color: var(--expo-ink); }
+.expo-page .expo-button--outline:hover { background: var(--expo-ink); color: var(--expo-blush); }
+.expo-page .expo-button--light { color: var(--expo-blush); border-color: var(--expo-blush); }
+.expo-page .expo-button--light:hover { background: var(--expo-blush); color: var(--expo-wine); }
+
+/* Photo with the site's offset tab under its bottom-left corner */
+.expo-page .expo-raffle__portrait,
+.expo-page .expo-place__map { position: relative; margin: 0; }
+.expo-page .expo-raffle__portrait::after,
+.expo-page .expo-place__map::after { content: ""; position: absolute; left: 0; bottom: -9px; width: 167px; height: 18px; }
+
+/* ---- Raffle band ----------------------------------------------------------------------------- */
+.expo-page .expo-raffle { background: var(--expo-wine); color: var(--expo-blush); padding: 104px 24px; scroll-margin-top: 90px; }
+.expo-page .expo-raffle__inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 72px; align-items: center; }
+.expo-page .expo-raffle__portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; box-shadow: var(--expo-shadow); }
+.expo-page .expo-raffle__portrait::after { background: var(--expo-gold); }
+.expo-page .expo-raffle__quote { margin: 0 0 28px; }
+.expo-page .expo-raffle__quote p { margin: 0; font-family: "Elegancia Font Picnic", serif; font-size: 22px; line-height: 1.5; color: var(--expo-blush); max-width: 34em; }
+.expo-page .expo-raffle__quote footer { margin-top: 6px; }
+.expo-page .expo-raffle__sign { display: inline-block; font-size: 40px; }
+.expo-page .expo-raffle__who { margin: 0 0 6px; font-family: "Inter", sans-serif; font-size: 16px; font-weight: 600; color: #fff; }
+.expo-page .expo-prizes { list-style: none; counter-reset: prize; margin: 0 0 30px; padding: 0; }
+.expo-page .expo-prizes li {
+  counter-increment: prize; display: grid; grid-template-columns: 48px 1fr; column-gap: 14px; align-items: baseline;
+  padding: 14px 0; border-bottom: 1px solid rgb(232 202 78 / 0.45);
+}
+.expo-page .expo-prizes li::before {
+  content: counter(prize); grid-row: span 2; font-family: "Elegancia Font Picnic", serif; font-weight: 700;
+  font-size: 38px; line-height: 1; color: var(--expo-gold-light);
+}
+.expo-page .expo-prizes__name { font-family: "Elegancia Font Picnic", serif; font-weight: 600; font-size: 22px; line-height: 1.25; text-transform: uppercase; letter-spacing: 2px; color: #fff; }
+.expo-page .expo-prizes__note { font-family: "Inter", sans-serif; font-size: 15px; line-height: 1.5; color: #F6D9DF; }
+.expo-page .expo-raffle__how { margin: 0 0 10px; font-family: "Elegancia Font Picnic", serif; font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 3px; color: var(--expo-gold-light); }
+.expo-page .expo-steps { margin: 0 0 14px; padding-left: 1.3em; font-family: "Inter", sans-serif; font-size: 16px; line-height: 1.6; color: #fff; }
+.expo-page .expo-steps li + li { margin-top: 6px; }
+.expo-page .expo-steps li::marker { color: var(--expo-gold-light); font-weight: 600; }
+.expo-page .expo-raffle a:not(.expo-button) { color: #fff; text-decoration: underline; text-decoration-color: var(--expo-gold-light); text-underline-offset: 3px; }
+.expo-page .expo-raffle a:not(.expo-button):hover { color: var(--expo-gold-light); }
+.expo-page .expo-raffle__bonus { margin: 0 0 30px; font-family: "Inter", sans-serif; font-size: 15px; color: #F6D9DF; }
+
+/* ---- Crown divider (as on the Elite Team page) ------------------------------------------------- */
+.expo-page .expo-divider { display: flex; align-items: center; gap: 18px; max-width: 1240px; margin: 56px auto 0; padding: 15px 24px; }
+.expo-page .expo-divider span { flex: 1; height: 5px; background: var(--expo-ink); }
+.expo-page .expo-crown { width: 40px; height: auto; fill: var(--expo-gold); }
+
+/* ---- Cómo llegar ------------------------------------------------------------------------------- */
+.expo-page .expo-place { max-width: 1140px; margin: 0 auto; padding: 72px 24px 112px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: center; scroll-margin-top: 90px; }
+.expo-page .expo-place__address { margin: 0 0 10px; font-family: "Elegancia Font Picnic", serif; font-size: 26px; line-height: 1.35; color: var(--expo-wine); }
+.expo-page .expo-place__date { margin: 0 0 28px; font-family: "Inter", sans-serif; font-size: 16px; color: var(--expo-ink); }
+.expo-page .expo-place__actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.expo-page .expo-place__map iframe { display: block; width: 100%; aspect-ratio: 4 / 3; border: 0; box-shadow: var(--expo-shadow); background: #f3d2d6; }
+.expo-page .expo-place__map::after { background: var(--expo-ink); }
+
+/* ---- Tablet and phone -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .expo-page .expo-raffle__inner, .expo-page .expo-place { grid-template-columns: 1fr; gap: 48px; }
+  .expo-page .expo-raffle__portrait { max-width: 440px; width: 100%; justify-self: center; }
+  .expo-page .expo-place__copy { text-align: center; }
+  .expo-page .expo-place__actions { justify-content: center; }
+}
+@media (max-width: 767px) {
+  .expo-page .expo-raffle { padding: 72px 16px 80px; }
+  .expo-page .expo-raffle__copy { text-align: left; }
+  .expo-page .expo-script { font-size: 40px; }
+  .expo-page .expo-title { letter-spacing: 3px; font-size: clamp(2.3rem, 10vw, 3rem); }
+  .expo-page .expo-raffle__quote p { font-size: 19px; }
+  .expo-page .expo-prizes__name { font-size: 19px; letter-spacing: 1px; }
+  .expo-page .expo-place { padding: 56px 16px 88px; }
+  .expo-page .expo-divider { margin-top: 40px; padding: 15px 16px; }
+}
