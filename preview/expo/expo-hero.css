@@ -1,0 +1,58 @@
+/* /expo/ cover, "Estreno": the Elite Team establo photo full-bleed, copy on a wine fade.
+   Same world as the rest of the page: wine, blush, gold, Picnic + Gastela, Inter. */
+
+.expo-page .xh { position: relative; overflow: hidden; }
+
+.expo-page .xh h1 { margin: 0; font-family: "Elegancia Font Picnic", serif; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; line-height: 0.92; text-wrap: balance; }
+.expo-page .xh .xh-script { margin: 0; font-family: "Elegancia Font Gastela", cursive; font-weight: 400; line-height: 1.1; }
+.expo-page .xh .xh-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.expo-page .xh .expo-button--gold { background: #E8CA4E; border-color: #E8CA4E; color: #4A1D2C; }
+.expo-page .xh .expo-button--gold:hover { background: #F9E0E2; border-color: #F9E0E2; color: #4A1D2C; }
+
+/* Countdown as a lock-up: big number with FALTAN over DÍAS beside it */
+.expo-page .xh .expo-count { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 16px; align-items: end; justify-content: start; margin: 0; text-align: left; }
+.expo-page .xh .expo-count__days { grid-row: 1 / 3; grid-column: 1; margin: 0; }
+.expo-page .xh .expo-count__label { grid-row: 1; grid-column: 2; align-self: end; }
+.expo-page .xh .expo-count__unit { grid-row: 2; grid-column: 2; align-self: start; margin-top: 8px; }
+.expo-page .xh .expo-count__num { min-width: 0; text-align: left; line-height: 0.8; }
+.expo-page .xh .expo-count__when { grid-column: 1 / -1; margin-top: 14px; text-align: left; }
+.expo-page .xh .expo-count[data-state="pending"] { display: block; }
+
+/* ---- 1 · Estreno: the establo photo full-bleed, the cover reads like a film poster ------------ */
+.expo-page .xh--1 { min-height: max(640px, calc(100svh - 102px)); background: #2B0F19; color: #F9E0E2; }
+.expo-page .xh--1 .xh-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 58% 40%; }
+.expo-page .xh--1::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgb(43 15 25 / 0.94) 0%, rgb(74 29 44 / 0.78) 30%, rgb(74 29 44 / 0.15) 58%, transparent 72%),
+    linear-gradient(0deg, rgb(43 15 25 / 0.7) 0%, transparent 35%);
+}
+.expo-page .xh--1 .xh-copy { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; gap: 18px; min-height: inherit; max-width: 640px; padding: 56px clamp(24px, 6vw, 96px); }
+.expo-page .xh--1 .xh-script { color: #E8CA4E; font-size: clamp(40px, 4vw, 58px); }
+.expo-page .xh--1 h1 { color: #F9E0E2; font-size: clamp(3.4rem, 6.4vw, 6.4rem); }
+.expo-page .xh--1 h1 span { display: block; color: #E8CA4E; font-size: 0.52em; letter-spacing: 6px; margin-top: 10px; }
+.expo-page .xh--1 .expo-count__num { color: #F9E0E2; font-size: clamp(6rem, 9vw, 8.5rem); }
+.expo-page .xh--1 .expo-count__label, .expo-page .xh--1 .expo-count__unit { color: #E8CA4E; }
+.expo-page .xh--1 .expo-count__when { color: #fff; }
+
+/* The Inicio's floating social rail, kept on this page */
+.expo-page.elementor-154 .elementor-element.elementor-element-bda450e { position: fixed; left: 0; top: 50%; translate: 0 -50%; z-index: 40; width: auto; }
+
+/* ---- Phone ------------------------------------------------------------------------------------ */
+@media (max-width: 767px) {
+  .expo-page .xh--1 { min-height: 0; }
+  .expo-page .xh--1 .xh-bg { position: relative; height: 54svh; object-position: 52% 50%; }
+  .expo-page .xh--1::after { background: linear-gradient(0deg, #2B0F19 0%, transparent 30%); height: 54svh; }
+  .expo-page .xh--1 .xh-copy { min-height: 0; margin-top: -60px; padding: 0 20px 48px; background: linear-gradient(180deg, transparent 0, #2B0F19 60px); }
+}
+
+/* Keep the copy clear of the floating social rail */
+@media (min-width: 768px) {
+  .expo-page .xh--1 .xh-copy { padding-left: max(clamp(24px, 6vw, 96px), 120px); }
+}
+
+/* On phones the rail sits under the header, as on the Inicio, not over the cover's copy */
+@media (max-width: 767px) {
+  .expo-page.elementor-154 .elementor-element.elementor-element-bda450e { top: 70px; translate: none; }
+}
+

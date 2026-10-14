@@ -31,10 +31,16 @@ function startExpo() {
     a.removeAttribute('aria-current');
   });
 
+  fillCounts();
+  // Sections added after load (live previews, editors) get their count too.
+  new MutationObserver(() => fillCounts()).observe(document.body, { childList: true, subtree: true });
+}
+
+function fillCounts() {
   const n = daysLeft();
   const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     || new URLSearchParams(location.search).has('settled');
-  document.querySelectorAll('[data-expo-count]').forEach((box) => {
+  document.querySelectorAll('[data-expo-count][data-state="pending"]').forEach((box) => {
     const num = box.querySelector('[data-expo-days]');
     const unit = box.querySelector('[data-expo-unit]');
     const label = box.querySelector('[data-expo-label]');
@@ -53,6 +59,7 @@ function startExpo() {
       box.setAttribute('aria-label', 'La expo es hoy');
       return;
     }
+    box.dataset.state = 'count';
     label.textContent = n === 1 ? 'Falta' : 'Faltan';
     unit.textContent = n === 1 ? 'día' : 'días';
     box.setAttribute('role', 'group');
@@ -60,7 +67,6 @@ function startExpo() {
     num.textContent = String(n);
     if (calm || !('IntersectionObserver' in window)) return;
 
-    num.textContent = String(n + 18);
     const io = new IntersectionObserver((entries) => {
       if (!entries.some((e) => e.isIntersecting)) return;
       io.disconnect();

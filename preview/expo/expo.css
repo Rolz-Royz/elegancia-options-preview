@@ -12,6 +12,7 @@
   --expo-gold-light: #E8CA4E;  /* gold that holds up on wine */
   --expo-shadow: 7px 6px 10px 0 rgb(0 0 0 / 0.45);
   --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --expo-crown: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath d='M528 448H112c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm64-320c-26.5 0-48 21.5-48 48 0 7.1 1.6 13.7 4.4 19.8L476 239.2c-15.4 9.2-35.3 4-44.2-11.6L350.3 85C361 76.2 368 63 368 48c0-26.5-21.5-48-48-48s-48 21.5-48 48c0 15 7 28.2 17.7 37l-81.5 142.6c-8.9 15.6-28.9 20.8-44.2 11.6l-72.3-43.4c2.7-6 4.4-12.7 4.4-19.8 0-26.5-21.5-48-48-48S0 149.5 0 176s21.5 48 48 48c2.6 0 5.2-.4 7.7-.8L128 416h384l72.3-192.8c2.5.4 5.1.8 7.7.8 26.5 0 48-21.5 48-48s-21.5-48-48-48z'/%3E%3C/svg%3E");
 }
 .expo-page ::selection { background: var(--expo-wine); color: var(--expo-blush); }
 .expo-page :focus-visible { outline: 2px solid var(--expo-gold); outline-offset: 3px; }
@@ -20,17 +21,19 @@
 /* Above the phone cover's veil, like the widgets around it */
 .expo-page .expo-count { position: relative; z-index: 2; text-align: center; margin: 4px auto 22px; }
 .expo-page .expo-count p { margin: 0; }
-.expo-page .expo-count__label {
+/* "FALTAN" above the number and "DÍAS" below it: Picnic, because Gastela draws í without its accent */
+.expo-page .expo-count__label,
+.expo-page .expo-count__unit {
   font-family: "Elegancia Font Picnic", serif; font-weight: 600; text-transform: uppercase;
   letter-spacing: 4px; font-size: 22px; line-height: 1; color: var(--expo-wine);
 }
-.expo-page .expo-count__days { display: flex; align-items: baseline; justify-content: center; gap: 14px; margin-top: 2px; }
+.expo-page .expo-count__unit { margin-top: 10px; }
+.expo-page .expo-count__days { margin-top: 6px; }
 .expo-page .expo-count__num {
   display: inline-block; min-width: 2ch; text-align: center;
   font-family: "Elegancia Font Picnic", serif; font-weight: 700; font-size: clamp(7rem, 11vw, 10.5rem);
   line-height: 0.84; letter-spacing: -0.02em; color: var(--expo-wine);
 }
-.expo-page .expo-count__unit { font-family: "Elegancia Font Gastela", cursive; font-size: 50px; line-height: 1; color: var(--expo-script); }
 .expo-page .expo-count__when { margin-top: 16px; font-family: "Inter", sans-serif; font-size: 15px; font-weight: 500; line-height: 1.5; letter-spacing: 0.02em; color: var(--expo-wine); }
 
 /* The three photos in "Ven a vernos" share the Inicio cards' landscape frame */
@@ -39,13 +42,21 @@
 .expo-page.elementor-154 .elementor-element.elementor-element-38372d24 img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
 .expo-page.elementor-154 .elementor-element.elementor-element-5bc04cde img { object-position: 50% 62%; }
 .expo-page.elementor-154 .elementor-element.elementor-element-38372d24 img { object-position: 50% 30%; }
+/* Until the script has counted (or without it), only the date line shows */
+.expo-page .expo-count[data-state="pending"] :is(.expo-count__label, .expo-count__days, .expo-count__unit),
 .expo-page .expo-count[data-state="today"] .expo-count__unit,
-.expo-page .expo-count[data-state="past"] .expo-count__days { display: none; }
+.expo-page .expo-count[data-state="past"] :is(.expo-count__days, .expo-count__unit) { display: none; }
+
+/* "Ven a vernos": photos, titles and buttons start on one line across the three columns */
+.expo-page.elementor-154 .elementor-element.elementor-element-1ddaa4f6 { --align-items: flex-start; align-items: flex-start; }
+.expo-page.elementor-154 .elementor-element.elementor-element-7af23cc1,
+.expo-page.elementor-154 .elementor-element.elementor-element-49d63a20,
+.expo-page.elementor-154 .elementor-element.elementor-element-25d034bd { --justify-content: flex-start; justify-content: flex-start; }
 
 /* Over the phone cover's dark veil */
 .expo-page .expo-count--veil .expo-count__label { color: #fff; }
 .expo-page .expo-count--veil .expo-count__num { color: var(--expo-blush); font-size: clamp(5.5rem, 26vw, 7.5rem); }
-.expo-page .expo-count--veil .expo-count__unit { color: var(--expo-gold-light); font-size: 44px; }
+.expo-page .expo-count--veil .expo-count__unit { color: var(--expo-gold-light); }
 .expo-page .expo-count--veil .expo-count__when { color: #fff; }
 
 /* ---- Shared type and buttons for the new sections ------------------------------------------ */
@@ -85,7 +96,8 @@
 
 /* ---- Raffle band ----------------------------------------------------------------------------- */
 .expo-page .expo-raffle { background: var(--expo-wine); color: var(--expo-blush); padding: 104px 24px; scroll-margin-top: 90px; }
-.expo-page .expo-raffle__inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 72px; align-items: center; }
+.expo-page .expo-raffle__inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 72px; align-items: start; }
+@media (min-width: 1025px) { .expo-page .expo-raffle__portrait { position: sticky; top: 130px; } }
 .expo-page .expo-raffle__portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; box-shadow: var(--expo-shadow); }
 .expo-page .expo-raffle__portrait::after { background: var(--expo-gold); }
 .expo-page .expo-raffle__quote { margin: 0 0 28px; }
@@ -93,15 +105,18 @@
 .expo-page .expo-raffle__quote footer { margin-top: 6px; }
 .expo-page .expo-raffle__sign { display: inline-block; font-size: 40px; }
 .expo-page .expo-raffle__who { margin: 0 0 6px; font-family: "Inter", sans-serif; font-size: 16px; font-weight: 600; color: #fff; }
-.expo-page .expo-prizes { list-style: none; counter-reset: prize; margin: 0 0 30px; padding: 0; }
+.expo-page .expo-prizes { list-style: none; margin: 0 0 30px; padding: 0; }
 .expo-page .expo-prizes li {
-  counter-increment: prize; display: grid; grid-template-columns: 48px 1fr; column-gap: 14px; align-items: baseline;
+  display: grid; grid-template-columns: 34px 1fr; column-gap: 14px; align-items: center;
   padding: 14px 0; border-bottom: 1px solid rgb(232 202 78 / 0.45);
 }
 .expo-page .expo-prizes li::before {
-  content: counter(prize); grid-row: span 2; font-family: "Elegancia Font Picnic", serif; font-weight: 700;
-  font-size: 38px; line-height: 1; color: var(--expo-gold-light);
+  content: ""; grid-row: span 2; width: 30px; height: 24px; background: var(--expo-gold-light);
+  -webkit-mask: var(--expo-crown) center / contain no-repeat; mask: var(--expo-crown) center / contain no-repeat;
 }
+.expo-page .expo-prizes__name, .expo-page .expo-prizes__note { grid-column: 2; }
+.expo-page .expo-price { white-space: nowrap; }
+.expo-page .expo-dollar { margin-right: -0.22em; }
 .expo-page .expo-prizes__name { font-family: "Elegancia Font Picnic", serif; font-weight: 600; font-size: 22px; line-height: 1.25; text-transform: uppercase; letter-spacing: 2px; color: #fff; }
 .expo-page .expo-prizes__note { font-family: "Inter", sans-serif; font-size: 15px; line-height: 1.5; color: #F6D9DF; }
 .expo-page .expo-raffle__how { margin: 0 0 10px; font-family: "Elegancia Font Picnic", serif; font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 3px; color: var(--expo-gold-light); }
