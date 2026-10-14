@@ -131,6 +131,7 @@
     ['h', 'H', 'Alta costura'],
   ];
   const here = (location.pathname.match(/\/preview\/([a-z]+)/) || [])[1];
+  if (here === 'expo') return; // the expo page has its own cover picker
   const nav = document.createElement('nav');
   nav.className = 'opt-switch';
   nav.setAttribute('aria-label', 'Opciones de diseño');
