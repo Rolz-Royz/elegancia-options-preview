@@ -40,7 +40,7 @@
 .expo-page.elementor-154 .elementor-element.elementor-element-114de4f4 img,
 .expo-page.elementor-154 .elementor-element.elementor-element-5bc04cde img,
 .expo-page.elementor-154 .elementor-element.elementor-element-38372d24 img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
-.expo-page.elementor-154 .elementor-element.elementor-element-5bc04cde img { object-position: 50% 62%; }
+.expo-page.elementor-154 .elementor-element.elementor-element-5bc04cde img { object-position: 50% 16%; }
 .expo-page.elementor-154 .elementor-element.elementor-element-38372d24 img { object-position: 50% 30%; }
 /* Until the script has counted (or without it), only the date line shows */
 .expo-page .expo-count[data-state="pending"] :is(.expo-count__label, .expo-count__days, .expo-count__unit),
